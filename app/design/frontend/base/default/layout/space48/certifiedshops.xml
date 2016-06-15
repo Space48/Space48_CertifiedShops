@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+	<default>
+		<reference name="before_body_end">
+			<block type="space48_certifiedshops/badge" name="space48_certifiedshops.badge">
+				<action method="setTemplate" ifconfig="google/space48_certifiedshops/active">
+					<template>space48/certifiedshops/badge.phtml</template>
+				</action>
+			</block>
+		</reference>
+	</default>
+	<checkout_onepage_success>
+		<reference name="before_body_end">
+			<block type="space48_certifiedshops/success" name="space48_certifiedshops.success">
+				<action method="setTemplate" ifconfig="google/space48_certifiedshops/active">
+					<template>space48/certifiedshops/success.phtml</template>
+				</action>
+			</block>
+		</reference>
+	</checkout_onepage_success>
+	<certifiedshops_test_success>
+		<reference name="root">
+			<action method="setTemplate"><template>page/empty.phtml</template></action>
+		</reference>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_js</type>
+				<file>js/space48/certifiedshopstest.js</file>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="space48_certifiedshops/success" name="space48_certifiedshops.test.success" template="space48/certifiedshops/success.phtml" />
+		</reference>
+	</certifiedshops_test_success>
+</layout>

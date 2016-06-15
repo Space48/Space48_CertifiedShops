@@ -1,0 +1,27 @@
+<?php $_helper = Mage::helper('space48_certifiedshops') ?>
+<script type="text/javascript">
+    var gts = gts || [];
+    gts.push(["id", "<?php echo $_helper->getConfig('trusted_store_id') ?>"]);
+    gts.push(["badge_position", "<?php echo $_helper->getConfig('badge_position') ?>"]);
+    <?php if($_helper->getConfig('badge_position') === 'USER_DEFINED') : ?>
+    gts.push(["badge_container", "<?php echo 'GTS_CONTAINER'; ?>"]);
+    <?php endif ?>
+    gts.push(["locale", "<?php echo $_helper->getConfig('locale'); ?>"]);
+    <?php if ($this->isGoogleOfferItemPage()) : ?>
+    gts.push(["google_base_offer_id", "<?php echo $this->getGoogleBaseOfferId() ?>"]);
+    gts.push(["google_base_subaccount_id", "<?php echo $_helper->getConfig('google_shopping_account_id') ?>"]);
+    gts.push(["google_base_country", "<?php echo $_helper->getConfig('google_shopping_country') ?>"]);
+    gts.push(["google_base_language", "<?php echo $_helper->getConfig('google_shopping_language') ?>"]);
+    <?php endif; ?>
+    (function() {
+        var gts = document.createElement("script");
+        gts.type = "text/javascript";
+        gts.async = true;
+        gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(gts, s);
+    })();
+</script>
+<?php if($_helper->getConfig('badge_position') === 'USER_DEFINED') : ?>
+<div id="GTS_CONTAINER"></div>
+<?php endif ?>

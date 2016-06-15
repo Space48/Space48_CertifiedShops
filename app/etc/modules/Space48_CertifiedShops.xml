@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Space48_CertifiedShops>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Space48_CertifiedShops>
+    </modules>
+</config>

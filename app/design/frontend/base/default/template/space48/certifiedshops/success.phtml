@@ -1,0 +1,33 @@
+<?php if ($this->hasLastOrder()) : ?>
+    <?php $_order = $this->getLastOrder() ?>
+    <?php $_helper = Mage::helper('space48_certifiedshops') ?>
+    <div id="gts-order" style="display: none" translate="no">
+        <span id="gts-o-id"><?php echo $_order->getIncrementId() ?></span>
+        <span id="gts-o-domain"><?php echo $this->getFormattedBaseUrl() ?></span>
+        <span id="gts-o-email"><?php echo $_order->getCustomerEmail() ?></span>
+        <span id="gts-o-country"><?php echo $this->getOrderCountry() ?></span>
+        <span id="gts-o-currency"><?php echo $_order->getBaseCurrencyCode() ?></span>
+        <span id="gts-o-total"><?php echo $this->formatPrice($_order->getBaseGrandTotal()) ?></span>
+        <span id="gts-o-discounts"><?php echo $this->formatPrice($_order->getBaseDiscountAmount()) ?></span>
+        <span id="gts-o-shipping-total"><?php echo $this->formatPrice($_order->getBaseShippingAmount()) ?></span>
+        <span id="gts-o-tax-total"><?php echo $this->formatPrice($_order->getBaseTaxAmount()) ?></span>
+        <span id="gts-o-est-ship-date"><?php echo $this->getEstimatedShippingDate() ?></span>
+        <span id="gts-o-est-delivery-date"><?php echo $this->getEstimatedDeliveryDate() ?></span>
+        <span id="gts-o-has-preorder"><?php echo $this->getOrderHasPreOrders() ?></span>
+        <span id="gts-o-has-digital"><?php echo $this->isVirtual() ?></span>
+        <?php $i = 1 ?>
+        <?php foreach($this->getAllVisibleItems() as $_item) : ?>
+            <!-- start item <?php echo $i; ?> -->
+            <span class="gts-item">
+                <span class="gts-i-name"><?php echo $_item->getName() ?></span>
+                <span class="gts-i-price"><?php echo $this->formatPrice($_item->getBaseOriginalPrice()) ?></span>
+                <span class="gts-i-quantity"><?php echo round($_item->getQtyOrdered()) ?></span>
+                <span class="gts-i-prodsearch-id"><?php echo $_item->getSku(); ?></span>
+                <span class="gts-i-prodsearch-store-id"><?php echo $_helper->getConfig('google_shopping_account_id') ?></span>
+            </span>
+            <!-- end item <?php echo $i; ?> -->
+            <?php $i++ ?>
+        <?php endforeach ?>
+    </div>
+    <pre id="test-certifiedshops"></pre>
+<?php endif ?>
