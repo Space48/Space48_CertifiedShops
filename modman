@@ -1,0 +1,5 @@
+app/code/community/Space48/CertifiedShops app/code/community/Space48/CertifiedShops
+app/etc/modules/Space48_CertifiedShops.xml app/etc/modules/Space48_CertifiedShops.xml
+app/design/frontend/base/default/layout/space48/certifiedshops.xml app/design/frontend/base/default/layout/space48/certifiedshops.xml
+app/design/frontend/base/default/template/space48/certifiedshops app/design/frontend/base/default/template/space48/certifiedshops
+skin/frontend/base/default/js/space48/certifiedshopstest.js skin/frontend/base/default/js/space48/certifiedshopstest.js
