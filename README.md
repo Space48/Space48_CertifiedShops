@@ -2,7 +2,7 @@
 
 ### About this Extension
 
-This extension implements the GTS [badge code](https://support.google.com/trustedstoresmerchant/answer/6063080?hl=en-GB&ref_topic=6063044#variables) on every page of the website frontend. It will also display the [order success](https://support.google.com/trustedstoresmerchant/answer/6063087?hl=en-GB&ref_topic=6063044) page purchase protection popup when a customer completes an order.
+This extension implements the GCS [badge code](https://support.google.com/trustedstoresmerchant/answer/6063080?hl=en-GB&ref_topic=6063044#variables) on every page of the website frontend. It will also display the [order success](https://support.google.com/trustedstoresmerchant/answer/6063087?hl=en-GB&ref_topic=6063044) page purchase protection popup when a customer completes an order.
 
 [More Information about Google Certified Shops](https://support.google.com/trustedstoresmerchant/answer/6063065?hl=en-GB&ref_topic=6063044)
 
