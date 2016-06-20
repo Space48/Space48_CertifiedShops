@@ -3,6 +3,8 @@
     protected $order;
     protected $estimatedShippingDays = "";
     protected $estimatedDeliveryDays = "";
+    protected $estimatedShippingDate = "";
+    protected $estimatedDeliveryDate = "";
 
     /**
      * @param Mage_Sales_Model_Order
@@ -61,13 +63,33 @@
     }
 
     /**
+     * @param string
+     */
+    public function setEstimatedDeliveryDate($date)
+    {
+        if ($date !== null)
+        {
+            $this->estimatedDeliveryDate = $this->formatDate($date);
+        }
+    }
+
+    /**
+     * @param string
+     */
+    public function setEstimatedShippingDate($date)
+    {
+        $this->estimatedShippingDate = $this->formatDate($date);
+    }
+
+    /**
      * Returns the estimated shipping date
      *
      * @return string
      */
     public function getEstimatedShippingDate()
     {
-        return $this->formatDate($this->estimatedShippingDays);
+        return ($this->estimatedShippingDate) ? $this->estimatedShippingDate :
+        $this->getDateFromAddedWeekdays($this->estimatedShippingDays);
     }
 
     /**
@@ -77,7 +99,8 @@
      */
     public function getEstimatedDeliveryDate()
     {
-        return $this->formatDate($this->estimatedDeliveryDays);
+        return ($this->estimatedDeliveryDate) ? $this->estimatedDeliveryDate :
+            $this->getDateFromAddedWeekdays($this->estimatedDeliveryDays);
     }
 
     /**
@@ -86,13 +109,18 @@
      * @param int
      * @return string
      */
-    protected function formatDate($days)
+    protected function getDateFromAddedWeekdays($days)
     {
         if (is_numeric($days)) {
             return date('Y-m-d', strtotime($days . ' weekdays'));
         }
 
         return false;
+    }
+
+    protected function formatDate($date)
+    {
+        return date('Y-m-d', strtotime($date));
     }
 
     /**

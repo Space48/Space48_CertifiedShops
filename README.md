@@ -11,7 +11,7 @@ This extension implements the GCS [badge code](https://support.google.com/truste
 - Magento Community Edition 1.4 to 1.9
 - Magento Enterprise Edition 1.12 to 1.14
 
-### Installation
+### Manual Installation
 
 1. Unpack the extension ZIP file in your Magento root directory
 2. Clear the Magento cache: **System > Cache Management**
@@ -70,6 +70,19 @@ public function setCustomEstimates(Varien_Event_Observer $observer)
 
     $estimate->setEstimatedShippingDays(6);
     $estimate->setEstimatedDeliveryDays(8);
+}
+````
+
+Alternatively, you can set a fixed date for each estimate (this will override any days that have been set):
+
+````
+public function setCustomEstimates(Varien_Event_Observer $observer)
+{
+    $estimate = $observer->getEvent()->getEstimate();
+    $order = $estimate->getOrder();
+
+    $estimate->setEstimatedShippingDate("2016-06-27");
+    $estimate->setEstimatedDeliveryDate("2016-06-29");
 }
 ````
 
