@@ -60,7 +60,7 @@ The page will display a preview of the order success code for that order, someth
 
 By creating a very basic local module it's possible to hook into this extension to set custom shipping and delivery estimates. The event you want to listen for is called `certified_shops_estimates_after`. This allows all the custom business logic to be kept separate from the main module.
 
-Below is an example of how data can be retrieved and set using an observer:
+Below is an example of how data can be retrieved and set using an observer. In this example I'm setting the number of weekdays from today's date, which will be converted into a date on the frontend.
 
 ````
 public function setCustomEstimates(Varien_Event_Observer $observer)
